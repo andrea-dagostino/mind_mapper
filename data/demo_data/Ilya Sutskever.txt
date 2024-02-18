@@ -1,0 +1,30 @@
+Ilya Sutskever FRS (/ˈɪljə ˈsuːtskɪvər/; Hebrew: איליה סוצקבר; Russian: Илья́ Суцке́вер [ɪˈlʲja sʊtsˈkʲevʲɪr] born 1985/86)[4] is a computer scientist working in machine learning.[1] He is a co-founder and former Chief Scientist at OpenAI.[7]
+
+He has made several major contributions to the field of deep learning.[8][9][10] In 2023, Sutskever was one of the members of the OpenAI board who fired CEO Sam Altman; Altman returned a week later, and Sutskever stepped down from the board. He is the co-inventor, with Alex Krizhevsky and Geoffrey Hinton, of AlexNet, a convolutional neural network.[11] Sutskever is also one of the many co-authors of the AlphaGo paper.[12]
+
+Early life and education
+Sutskever was born in Nizhny Novgorod, Russia, then called Gorky, at the time part of the Soviet Union, and at age 5 immigrated with his family to Israel.[13] He spent his formative years in Jerusalem.[14]
+
+Sutskever attended the Open University of Israel between 2000 and 2002.[15] After that, he moved to Canada with his family and attended the University of Toronto in Ontario.
+
+From the University of Toronto, Sutskever received a Bachelor of Science in mathematics in 2005,[15][16][6][17] a Master of Science in computer science in 2007,[16][18] and a Doctor of Philosophy in computer science in 2013.[3][19][20] His doctoral supervisor was Geoffrey Hinton.[2]
+
+In 2012, Sutskever built AlexNet in collaboration with Hinton and Alex Krizhevsky. To support the computing demands of AlexNet, Sutskever bought many GTX 580 GPUs online.[21]
+
+Career and research
+
+Sutskever (second from right) at the Stanford Graduate School of Business in 2014
+From November to December 2012, Sutskever spent about two months as a postdoc with Andrew Ng at Stanford University. He then returned to the University of Toronto and joined Hinton's new research company DNNResearch, a spinoff of Hinton's research group. Four months later, in March 2013, Google acquired DNNResearch and hired Sutskever as a research scientist at Google Brain.[22]
+
+At Google Brain, Sutskever worked with Oriol Vinyals and Quoc Viet Le to create the sequence-to-sequence learning algorithm,[23] and worked on TensorFlow.[24]
+
+At the end of 2015, he left Google to become cofounder and chief scientist of the newly founded organization OpenAI.[25][26][27]
+
+In 2023, he announced that he will co-lead OpenAI's new "Superalignment" project, which tries to solve the alignment of superintelligences in 4 years. He wrote that even if superintelligence seems far off, it could happen this decade.[28]
+
+Sutskever was formerly one of the six board members of the non-profit entity which controls OpenAI.[29] The Information speculated that the firing of Sam Altman in part resulted from a conflict over the extent to which the company should commit to AI safety.[30] In a company all-hands meeting shortly after the board meeting, Sutskever stated that firing Altman was "the board doing its duty",[31] though in the following week, he expressed regret at having participated in Altman's ousting.[32] The firing of Altman and resignation of Brockman led to resignation of three senior researchers from OpenAI.[33] Following these events, Sutskever stepped down from the board of OpenAI.[34]
+
+Awards and honours
+2015, Sutskever was named in MIT Technology Review's 35 Innovators Under 35.[35]
+2018, Sutskever was the keynote speaker at Nvidia Ntech 2018[36] and AI Frontiers Conference 2018.[37]
+2022, he was elected a Fellow of the Royal Society (FRS).[23]

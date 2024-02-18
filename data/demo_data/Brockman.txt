@@ -1,0 +1,17 @@
+Greg Brockman (born November 29, 1987) is an American entrepreneur, investor and software developer who is a co-founder[2] and currently the president of OpenAI.[3] He began his career at Stripe in 2010, upon leaving MIT, and became their CTO[4] in 2013. He left Stripe in 2015[5] to co-found OpenAI, where he also assumed the role of CTO.[6][7][8][9]
+
+Early life and education
+Brockman was born in Thompson, North Dakota, and attended Red River High School, where he excelled in mathematics, chemistry, and computer science.[6][10] He won a silver medal in the 2006 International Chemistry Olympiad[11] and became the first finalist from North Dakota to participate in the Intel science talent search since 1973.[12] In 2007, he attended Canada/USA Mathcamp, a summer program for mathematically talented high-school students.[13] In 2008, Brockman enrolled in Harvard University, but left only a year later, before briefly enrolling at Massachusetts Institute of Technology.[6][14]
+
+Career
+In 2010, he dropped out of MIT to join Stripe, Inc., a company founded by Patrick Collison, an MIT classmate, and his brother, John Collison. In 2013, he became Stripe's first-ever CTO, and grew the company from 5 to 205 employees.[8][15] Brockman left Stripe in May 2015, and co-founded OpenAI[16] in December 2015 with Sam Altman and Ilya Sutskever.[15][17]
+
+Brockman helped create the OpenAI founding team, and led various prominent projects early on at OpenAI, including OpenAI Gym and OpenAI Five, a Dota 2 bot.[18][19][8][20]
+
+On February 14, 2019, OpenAI announced that they had developed a new large language model called GPT-2,[21] but kept it private due to their concern for its potential misuse. They finally released the model to a limited group of beta testers in May 2019.[6][22]
+
+On March 14, 2023, in a live video demo, Brockman unveiled GPT-4,[23][24] the fourth iteration in the GPT series, and the newest language model created by OpenAI.[7][25][26][27]
+
+On November 17, 2023, along with the firing of Sam Altman from OpenAI, Greg Brockman was told he was being removed from the board, but was vital to the company and would remain in his role at the company, reporting to the CEO.[28][29] He later in the day announced on X (formerly known as Twitter) he had quit the company.[30]
+
+On November 20, 2023, Microsoft CEO Satya Nadella announced that Brockman and former OpenAI CEO Sam Altman would join Microsoft to lead a new advanced AI research team.[31] The following day, after a deal was reached to reinstate Altman as CEO, Brockman returned to OpenAI.[32]

@@ -1,0 +1,25 @@
+Building dashboards with Taipy in Python
+
+Hello guys, in todays video we'll go over how to build dashboards in Python using Taipy a new library to build simple and quick data driven applications such as dashboards. 
+
+
+Buy me a coffee:
+https://www.buymeacoffee.com/princez3
+
+Follow me on social media:
+Discord community server:  
+
+ / discord  
+Instagram:  
+
+ / codehouse2​​​  
+twitter:  
+
+ / codehouse​​​  
+Channel main page:   
+
+ / codewithpri.  .
+
+Hope you enjoy today's video. Please show your love and support by just liking and subscribing to the channel so we can grow a strong and powerful community. Activate the 🔔 beside the subscribe button to get the notification!📩 If you have any questions or requests feel free to leave them in the comments below.
+
+Thank you for watching and see you in the next video!!  porcodio

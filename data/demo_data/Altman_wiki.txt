@@ -1,0 +1,51 @@
+Samuel Harris Altman (/ˈɔːltmən/; AWLT-mən; born April 22, 1985) is an American entrepreneur and investor best known as the CEO of OpenAI since 2019 (he was briefly fired and reinstated in November 2023).[1] Altman is considered to be one of the leading figures of the AI boom.[2][3][4] He dropped out of university after two years and founded Loopt, a mobile social networking service, raising more than $30 million in venture capital. In 2011 Altman joined Y Combinator, a startup accelerator, and was its president from 2014 to 2019.[5]
+
+Early life and education
+Samuel Harris Altman was born on April 22, 1985, in Chicago, Illinois,[6][7] into a Jewish family,[8] and grew up in St. Louis, Missouri. His mother is a dermatologist, while his father was a real estate broker. Altman is the eldest of four siblings—brothers Jack and Max, and sister Annie.[9] At the age of eight he received his first computer, an Apple Macintosh.[10] He attended John Burroughs School, a private school in Ladue, Missouri. In 2005, after two years at Stanford University studying computer science, he dropped out without earning a bachelor's degree.[11][12]
+
+Career
+Early career
+In 2005, at the age of 19,[13] Altman co-founded Loopt,[14] a location-based social networking mobile application. As CEO, Altman raised more than $30 million in venture capital for the company; however, Loopt failed to gain traction with enough users. In March 2012, it was acquired by the Green Dot Corporation for $43.4 million.[15] The following month, Altman co-founded Hydrazine Capital with his brother, Jack Altman.[16][17]
+
+Altman became a partner at Y Combinator, a startup accelerator that invests in a wide range of startups, in 2011, initially working there on a part-time basis.[18] In February 2014, Altman was named president of Y Combinator by its co-founder, Paul Graham.[19] In a 2014 blog post, Altman said that the total valuation of Y Combinator companies had surpassed $65 billion, including Airbnb, Dropbox, Zenefits, and Stripe.[20] In September 2016, Altman announced his expanded role as president of YC Group, which included Y Combinator and other units.[21] Altman said that he hoped to expand Y Combinator to fund 1,000 new companies per year. He also tried to expand the types of companies funded by YC, especially "hard technology" companies.[22] In October 2015, Altman announced YC Continuity, a $700 million equity fund investing in YC companies as they matured.[23] A week earlier, Altman had introduced Y Combinator Research, a non-profit research lab, and donated $10 million to fund it.[24] YC Research has thus far announced research on basic income, the future of computing, education, and building new cities.[25] In March 2019, YC announced Altman's transition from the president of the company to a less hands-on role as chairman of the board, for him to focus on OpenAI.[26][27] This decision came shortly after YC announced it would be moving its headquarters to San Francisco.[28][29] As of early 2020, he was no longer affiliated with YC.[5] It was later reported that Altman was fired from YC, and had appointed himself Chairman without authorization.[30]
+
+Altman co-founded Tools For Humanity in 2019,[31] a company which builds and distributes systems designed to scan people's eyes to provide authentication and verify proof of personhood to counter fraud. People who agree to have their eyes scanned are compensated with a cryptocurrency called Worldcoin.[32][33][34][35] Tools For Humanity describes its cryptocurrency as similar to universal basic income.[36][37]
+
+Altman has several other investments. Including, "Humane", the world's first wearable computer powered by AI, "Retro Biosciences", a research company aiming to extend human life by 10 years, and "Helion Energy", an American fusion research company.[38][39]
+
+OpenAI
+
+British Prime Minister Rishi Sunak meets with Demis Hassabis, CEO DeepMind, Dario Amodei, CEO Anthropic, and Sam Altman, CEO OpenAI. May 2023
+OpenAI was initially funded by Altman, Greg Brockman, Elon Musk, Jessica Livingston, Peter Thiel, Microsoft, Amazon Web Services, Infosys, and YC Research. When OpenAI launched in 2015, it had raised $1 billion.[40] In March 2019, Sam Altman left Y Combinator to focus full-time on OpenAI as CEO.[41][1] By the summer of 2019, he had helped raise $1 billion from Microsoft.[42] Altman testified before the United States Senate Judiciary Subcommittee on Privacy, Technology and the Law on 16 May 2023 about issues of AI oversight.[43] After the success of ChatGPT, Altman made a world tour in May 2023, where he visited 22 countries and met multiple leaders and diplomats, including British prime minister Rishi Sunak, French president Emmanuel Macron, Spanish prime minister Pedro Sánchez, German chancellor Olaf Scholz, Indian prime minister Narendra Modi, South Korean president Yoon Suk-yeol, and Israeli president Isaac Herzog. He stood for a photo with European Commission president Ursula von der Leyen.[9]
+
+Removal and reinstatement as CEO
+Main article: Removal of Sam Altman from OpenAI
+On Friday November 17, 2023, OpenAI's board, composed of researcher Helen Toner, Quora CEO Adam D'Angelo, AI governance advocate Tasha McCauley, and most prominently in the firing, OpenAI co-founder and chief scientist Ilya Sutskyver, announced that they had made the decision to remove Altman as CEO and Greg Brockman from the board, both of whom were co-founders.[29] The announcement cited that Altman "was not consistently candid in his communications" in a public announcement on the OpenAI blog.[44][29] In response, Brockman resigned from his role as President of OpenAI.[45] The day after Altman was removed, The Verge reported that Altman and the board were in talks to bring him back to OpenAI.[46] On November 20, Microsoft CEO Satya Nadella announced that Altman would be joining Microsoft to lead a new advanced AI research team.[47] Two days later, OpenAI employees published an open letter to the board threatening to leave OpenAI and join Microsoft, where all employees had been promised jobs, unless all board members step down and reinstate Altman as CEO. 505 employees initially signed, which later grew to over 700 out of 770 total employees.[48] This included Ilya Sutskyver, who had previously advocated for firing Altman, but now had apologized stating on Twitter, "I regret my participation in the board's actions." Late in the night on November 20, OpenAI announced that they had reached an "agreement in principle" for Altman to return as CEO and Brockman to return as president.[49][50] The current board was to resign, other than D'Angelo, who was kept to represent the views of the previous board.
+
+Other endeavors
+For eight days in 2014, Altman was the CEO of Reddit, a social media company after CEO Yishan Wong resigned.[51][52] He announced the return of Steve Huffman as CEO on July 10, 2015.[53]
+
+During the COVID-19 pandemic, Altman helped fund and create Project Covalence to help researchers rapidly launch clinical trials in partnership with TrialSpark, a clinical trial startup.[54] During the depositor run on Silicon Valley Bank in mid-March 2023, Altman provided capital to multiple startups.[55] Altman invests in technology startups and nuclear energy companies. Some of his portfolio companies include Airbnb, Stripe and Retro Biosciences.[56] He is also chairman of the board for Helion, a company focused on developing nuclear fusion and Oklo, a nuclear fission company.[57]
+
+Reception
+
+Nancy Pelosi presenting Altman with the Ric Weiland Award in 2017
+In 2017, Altman received an honorary Doctor of Engineering degree from the University of Waterloo in Canada for supporting companies through its Velocity entrepreneurship program.[58] The government of Indonesia issued the country's first "golden visa", a 10-year border pass, to Altman in September 2023.[59]
+
+In 2023, Altman was named one of the 100 most influential people in the world and CEO of the Year by Time magazine,[60][61] one of the "Best Young Entrepreneurs in Technology" by Businessweek in 2008,[62] and the top investor under 30 by Forbes magazine in 2015.[63] Altman was invited to attend the Bilderberg Meeting in 2016,[64] 2022,[65] and 2023.[66][67]
+
+Walter Isaacson opined that Altman had "Musk-like intensity" which was instrumental in the founding of OpenAI in partnership with Elon Musk.[68]
+
+Personal life
+Altman has been a vegetarian since childhood.[69]
+
+He is gay[70][71][72] and came out at the age of 17[70] in high school,[71][72] where he spoke out after some students objected to a National Coming Out Day speaker.[70][73] He dated Loopt co-founder Nick Sivo for nine years; they broke up shortly after the company was acquired in 2012.[71]
+
+Altman married engineer Oliver Mulherin in January 2024,[74] at their estate in Hawaii;[75] the pair live in San Francisco's Russian Hill neighborhood and often spend weekends in Napa, California.[72][76]
+
+He is a prepper;[7][77] Altman said in 2016: "I have guns, gold, potassium iodide, antibiotics, batteries, water, gas masks from the Israel Defense Forces, and a big patch of land in Big Sur I can fly to."[7]
+
+Politics
+Recode had reported that Altman might run for Governor of California in the 2018 election, which he did not enter. In 2018, Altman announced "The United Slate", a political project to improve housing and healthcare policy.[78] In 2019, Altman held a fundraiser at his house in San Francisco for 2020 Democratic presidential candidate Andrew Yang.[79] In May 2020, Altman donated $250,000 to American Bridge 21st Century, a super-PAC supporting Democratic presidential candidate Joe Biden.[80]
+
+Altman is a supporter of land value taxation[81] and universal basic income.[82]
