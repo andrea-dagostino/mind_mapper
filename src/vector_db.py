@@ -35,7 +35,7 @@ def get_embedding(openai_client, text, model=MODEL):
     return get_embeddings(openai_client, [text], model)[0]
 
 
-def query(index, openai_client, question, system_prompt="", top_n=1):
+def query_vector_db(index, openai_client, question, system_prompt="", top_n=1):
     """Ask a question and print the response based on similar vectors found."""
     logger.info("Creating vector for question...")
     question_embedding = get_embedding(openai_client, question)

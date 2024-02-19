@@ -309,7 +309,7 @@ def create_mind_map():
             with st.chat_message("assistant"):
                 with st.status("Processing request...", expanded=True):
                     st.write("- Querying vector database...")
-                    data = vector_db.query(
+                    data = vector_db.query_vector_db(
                         index=vector_db_index,
                         openai_client=openai_client,
                         question=prompt,
