@@ -48,35 +48,30 @@ def create_plotly_mind_map(data: dict) -> go.Figure:
     # Create a trace for each edge, colored by origin
     traces = []
     for relationship in data["relationships"]:
-        origin = relationship["origin"]
-        color = color_map.get(
-            origin, "#888"
-        )  # Default color if origin is not specified
         x0, y0 = layout[relationship["source"]]
         x1, y1 = layout[relationship["target"]]
         edge_trace = go.Scatter(
             x=[x0, x1, None],
             y=[y0, y1, None],
-            line=dict(width=0.5, color=color),
-            hoverinfo="none",
-            mode="lines",
-            name=origin,
+            line=dict(width=0.5, color='#888'),  # Set a single color for all edges
+            hoverinfo='none',
+            mode='lines'
         )
         traces.append(edge_trace)
 
-    # Create legend items for each origin
-    for origin, color in color_map.items():
-        traces.append(
-            go.Scatter(
-                x=[None],
-                y=[None],
-                mode="markers",
-                marker=dict(size=10, color=color),
-                legendgroup=origin,
-                showlegend=True,
-                name=origin,
-            )
-        )
+    # # Create legend items for each origin
+    # for origin, color in color_map.items():
+    #     traces.append(
+    #         go.Scatter(
+    #             x=[None],
+    #             y=[None],
+    #             mode="markers",
+    #             marker=dict(size=10, color=color),
+    #             legendgroup=origin,
+    #             showlegend=True,
+    #             name=origin,
+    #         )
+    #     )
 
     # Modify node trace to color based on source node
     node_x = []
@@ -139,7 +134,7 @@ def create_plotly_mind_map(data: dict) -> go.Figure:
             )
         )
 
-    node_trace.marker.color = [len(G.edges(node)) for node in G.nodes()]
+    #node_trace.marker.color = [len(G.edges(node)) for node in G.nodes()]
     node_trace.text = [node for node in G.nodes()]
 
     # Create the figure
@@ -192,8 +187,8 @@ def create_plotly_mind_map(data: dict) -> go.Figure:
 
     # Update the edge trace color to be more visible on a dark background
     for trace in traces:
-        if "line" in trace:
-            trace["line"]["color"] = "#FFF"  # Set edge color to white for visibility
+        if 'line' in trace:
+            trace['line']['color'] = '#888'  # Set edge color to a single color for all edges
 
     # Update the node trace marker border color for better visibility
     node_trace.marker.line.color = "white"

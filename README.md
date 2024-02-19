@@ -1,6 +1,3 @@
-## Covert audio with Whisper
+# Mind Mapper
 
-Required: `brew install ffmpeg`
-
-Once installed, run this terminal command
-`insanely-fast-whisper --file-name {filename}`
+![Chatbot Gif](assets/mind_map.png)
