@@ -13,6 +13,9 @@ from tempfile import NamedTemporaryFile
 
 import pandas as pd
 
+from openai import OpenAI
+from upstash_vector import Index
+
 logger = get_console_logger("frontend")
 
 # CONSTANTS # TODO
@@ -20,13 +23,18 @@ AUDIO_FILE_TYPES = ["mp3", "wav"]
 PAGE_TITLE = "Mind Mapper | Create mind maps from your files"
 PAGE_ICON = "🧠"
 LAYOUT = "wide"
-SIDEBAR_STATE = "collapsed"
+SIDEBAR_STATE = "expanded"
 SYSTEM_PROMPT = """You are an AI assistant helping a user navigate a knowledge base.
 The user asks you a question and you provide an answer based on the knowledge base. 
 Always be as clear as possible, avoid ambiguity and provide the most accurate information possible without adding any additional information that is not present in the knowledge base.
 """
 
-# TODO: ADD TRAFILATURA?
+if "OPENAI_API_KEY" not in st.session_state:
+    st.session_state["OPENAI_API_KEY"] = ""
+if "UPSTASH_VECTOR_DB_REST_URL" not in st.session_state:
+    st.session_state["UPSTASH_VECTOR_DB_REST_URL"] = ""
+if "UPSTASH_VECTOR_DB_TOKEN" not in st.session_state:
+    st.session_state["UPSTASH_VECTOR_DB_TOKEN"] = ""
 
 
 def setup_page():
@@ -49,12 +57,31 @@ def setup_hero():
 
 
 def setup_sidebar():
-    pass
+    with st.sidebar:
+        st.markdown("### 🔑 API Keys")
+        # Example for setting up an API key input for OpenAI
+        openai_api_key = st.text_input(label="OpenAI API Key", type="password")
+        # Example for setting up an API key input for Upstash Vector DB
+        upstash_vector_db_rest_url = st.text_input(
+            label="Upstash Vector DB REST url", type="default"
+        )
+        upstash_vector_db_token = st.text_input(
+            label="Upstash Vector DB Token", type="password"
+        )
+
+        # Add a button to confirm the API keys setup
+        if st.button("Set API Keys"):
+            st.session_state["OPENAI_API_KEY"] = openai_api_key
+            st.session_state["UPSTASH_VECTOR_DB_REST_URL"] = upstash_vector_db_rest_url
+            st.session_state["UPSTASH_VECTOR_DB_TOKEN"] = upstash_vector_db_token
+            st.success("API keys set successfully")
 
 
-def setup_ai_assistant():
-    # gpt setup in sidebar
-    pass
+openai_client = OpenAI(api_key=st.session_state["OPENAI_API_KEY"])
+vector_db_index = Index(
+    url=st.session_state["UPSTASH_VECTOR_DB_REST_URL"],
+    token=st.session_state["UPSTASH_VECTOR_DB_TOKEN"],
+)
 
 
 def ingest(hash_id: str):  # Pass the uploaded file as an argument
@@ -65,7 +92,7 @@ def ingest(hash_id: str):  # Pass the uploaded file as an argument
         if not q.embedded:
             chunks = vector_db.create_chunks(q.text)
             vector_db.add_chunks_to_vector_db(
-                chunks, metadata={"source_hash_id": q.hash_id}
+                vector_db_index, chunks, metadata={"source_hash_id": q.hash_id}
             )
             db.update_one(q.hash_id, {"embedded": True})
             st.success(f"Item {hash_id} ingested")
@@ -118,9 +145,7 @@ def upload_text_file():
                 with NamedTemporaryFile(suffix=".txt") as temp_text_file:
                     temp_text_file.write(uploaded_text_file.getvalue())
                     temp_text_file.seek(0)
-                    progress_bar.progress(
-                        int((1 / len(uploaded_text_file)) * 100)
-                    )
+                    progress_bar.progress(int((1 / len(uploaded_text_file)) * 100))
                     hash_id = hash_text(temp_text_file.name)
                     db.add_one(
                         {
@@ -138,7 +163,7 @@ def upload_text_file():
                     with NamedTemporaryFile(suffix=".txt") as temp_text_file:
                         temp_text_file.write(file.getvalue())
                         temp_text_file.seek(0)
-                        
+
                         progress_bar.progress(
                             int(
                                 (uploaded_text_file.index(file) + 1)
@@ -176,7 +201,7 @@ def upload_audio_file():
                 temp_audio_file.seek(0)
                 # TODO: check if item exists before processing with Whisper
                 with st.spinner("Transcribing audio track..."):
-                    transcript = create_transcript(temp_audio_file.name)
+                    transcript = create_transcript(openai_client, temp_audio_file.name)
                     # Check if the transcript already exists in the database
                     existing_item = db.read_one(hash_text(transcript))
                     if existing_item is None:
@@ -239,10 +264,12 @@ def visualize_db():
             for item in items_selected:
                 item_id = df[df["Title"] == item]["ID"].values[0]
                 db.delete_one(item_id)
-                ids_to_delete = vector_db.fetch_by_source_hash_id(item_id)
+                ids_to_delete = vector_db.fetch_by_source_hash_id(
+                    vector_db_index, item_id
+                )
                 st.success(f"Item {item_id} deleted from database")
                 try:
-                    vector_db.index.delete(ids_to_delete)
+                    vector_db_index.delete(ids_to_delete)
                     st.success(f"Item {item_id} deleted from vector database")
                 except Exception as e:
                     st.error(f"Vector database deletion failed - {e}")
@@ -282,13 +309,21 @@ def create_mind_map():
             with st.chat_message("assistant"):
                 with st.status("Processing request...", expanded=True):
                     st.write("- Querying vector database...")
-                    data = vector_db.query(question=prompt, system_prompt=SYSTEM_PROMPT,top_n=5)
+                    data = vector_db.query(
+                        index=vector_db_index,
+                        openai_client=openai_client,
+                        question=prompt,
+                        system_prompt=SYSTEM_PROMPT,
+                        top_n=5,
+                    )
                     if data:
                         st.write("- Extracting mind map...")
-                        llm_data = llm.extract_mind_map_data(data)
+                        llm_data = llm.extract_mind_map_data(openai_client, data)
                         llm_data = eval(llm_data)
                         st.write("- Evaluating results...")
-                        comment = llm.extract_information_from_mind_map_data(llm_data)
+                        comment = llm.extract_information_from_mind_map_data(
+                            openai_client, llm_data
+                        )
             with st.chat_message("assistant"):
                 st.write(comment)
                 st.plotly_chart(
@@ -302,7 +337,7 @@ def create_mind_map():
 def start_frontend():
     setup_page()
     setup_hero()
-    # setup_sidebar() TODO
+    setup_sidebar()
     with st.container(border=True):
         create_mind_map()
     with st.expander("**🔡 Inputs**", expanded=True):

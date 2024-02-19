@@ -3,20 +3,10 @@ from src.db import add_one
 from src.utils import hash_text
 from src.schema import FileType
 
-import typer
-from openai import OpenAI
-import os
-from dotenv import load_dotenv
-
-
-load_dotenv()
-
-OPENAI_KEY = os.getenv("OPENAI_KEY")
 logger = get_console_logger("whisper")
-openai_client = OpenAI(api_key=OPENAI_KEY)
 
 
-def create_transcript(file_path: str) -> None:
+def create_transcript(openai_client, file_path: str) -> None:
     audio_file = open(file_path, "rb")
     logger.info(f"Creating transcript for {file_path}")
     transcript = openai_client.audio.transcriptions.create(
@@ -25,8 +15,8 @@ def create_transcript(file_path: str) -> None:
     return transcript.text
 
 
-def create_transcript_and_save(file_path: str) -> None:
-    transcript = create_transcript(file_path)
+def create_transcript_and_save(openai_client, file_path: str) -> None:
+    transcript = create_transcript(openai_client, file_path)
     add_one(
         {
             "file_type": FileType.AUDIO,
@@ -34,7 +24,3 @@ def create_transcript_and_save(file_path: str) -> None:
             "text": transcript,
         }
     )
-
-
-if __name__ == "__main__":
-    typer.run(create_transcript_and_save)

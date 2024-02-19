@@ -110,8 +110,3 @@ def delete_all():
         session.exec(Information).delete()
         session.commit()
         logger.info("All items deleted from the database")
-
-
-if __name__ == "__main__":
-    delete_one("")
-    delete_one(3)

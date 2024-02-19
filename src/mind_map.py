@@ -53,9 +53,9 @@ def create_plotly_mind_map(data: dict) -> go.Figure:
         edge_trace = go.Scatter(
             x=[x0, x1, None],
             y=[y0, y1, None],
-            line=dict(width=0.5, color='#888'),  # Set a single color for all edges
-            hoverinfo='none',
-            mode='lines'
+            line=dict(width=0.5, color="#888"),  # Set a single color for all edges
+            hoverinfo="none",
+            mode="lines",
         )
         traces.append(edge_trace)
 
@@ -134,7 +134,7 @@ def create_plotly_mind_map(data: dict) -> go.Figure:
             )
         )
 
-    #node_trace.marker.color = [len(G.edges(node)) for node in G.nodes()]
+    # node_trace.marker.color = [len(G.edges(node)) for node in G.nodes()]
     node_trace.text = [node for node in G.nodes()]
 
     # Create the figure
@@ -187,8 +187,10 @@ def create_plotly_mind_map(data: dict) -> go.Figure:
 
     # Update the edge trace color to be more visible on a dark background
     for trace in traces:
-        if 'line' in trace:
-            trace['line']['color'] = '#888'  # Set edge color to a single color for all edges
+        if "line" in trace:
+            trace["line"][
+                "color"
+            ] = "#888"  # Set edge color to a single color for all edges
 
     # Update the node trace marker border color for better visibility
     node_trace.marker.line.color = "white"
@@ -228,8 +230,3 @@ def create_graphviz_mind_map(data: dict) -> Digraph:
         )
 
     return dot
-
-
-# if __name__ == "__main__":
-#     text = "A mind map is a diagram used to visually organize information. It is hierarchical and shows relationships among pieces of the whole."
-#     create_mind_map(text)
