@@ -107,11 +107,11 @@ def text_input_area():
     )
     st.markdown("#### 📝 Copy-Paste Content")
     text = st.text_area(
-        "Paste in the knowledge you want to process", height=50, key="text_area"
+        "Paste in the knowledge you want to process", height=50, key="text_area", disabled=True
     )
-    title = st.text_input("Provide title", key="title_text_area")
+    title = st.text_input("Provide title", key="title_text_area", disabled=True)
     # save to db
-    if st.button("Save to database", key="text_area_save"):
+    if st.button("Save to database", key="text_area_save", disabled=True):
         if text and title:
             hash_id = hash_text(text)
             db.add_one(
@@ -135,9 +135,10 @@ def upload_text_file():
         "Upload a text file",
         type=["txt"],  # Use the constant for file types
         accept_multiple_files=True,
+        disabled=True
     )
     # save to db
-    if st.button("Save to database", key="upload_text_save"):
+    if st.button("Save to database", key="upload_text_save", disabled=True):
         progress_text = "Saving text files to database..."
         progress_bar = st.progress(0, text=progress_text)
         if uploaded_text_file is not None:
@@ -192,8 +193,9 @@ def upload_audio_file():
     uploaded_audio_file = st.file_uploader(
         "Upload an audio file",
         type=AUDIO_FILE_TYPES,  # Use the constant for file types
+        disabled=True
     )
-    if st.button("Transcribe & Save to database", key="transcribe"):
+    if st.button("Transcribe & Save to database", key="transcribe", disabled=True):
         if uploaded_audio_file is not None:
             extension = "." + uploaded_audio_file.name.split(".")[-1]
             with NamedTemporaryFile(suffix=extension) as temp_audio_file:
