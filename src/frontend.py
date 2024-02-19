@@ -58,10 +58,14 @@ def setup_hero():
 
 def setup_sidebar():
     with st.sidebar:
-        st.markdown("### 🔑 API Keys")
+        st.markdown("## 🔑 API Keys")
         # Example for setting up an API key input for OpenAI
+        st.markdown("### OpenAI"
+                    "\nGet your API key [here](https://platform.openai.com/docs/quickstart?context=python)")
         openai_api_key = st.text_input(label="OpenAI API Key", type="password")
         # Example for setting up an API key input for Upstash Vector DB
+        st.markdown("### Upstash Vector DB"
+                    "\nSetup your Vector DB [here](https://console.upstash.com/)")
         upstash_vector_db_rest_url = st.text_input(
             label="Upstash Vector DB REST url", type="default"
         )
