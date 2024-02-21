@@ -1,8 +1,6 @@
 from src.logger import get_console_logger
 from src.llm.prompts import PROMPTS
 
-import os
-
 
 logger = get_console_logger("llm")
 
