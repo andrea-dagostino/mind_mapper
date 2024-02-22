@@ -109,7 +109,9 @@ def add_chunks_to_vector_db(index, chunks, metadata):
         None
     """
     for chunk in chunks:
-        random_id = random.randint(0, 1000000) # workaround while waiting for metadata search to be implemented
+        random_id = random.randint(
+            0, 1000000
+        )  # workaround while waiting for metadata search to be implemented
         metadata["text"] = chunk
         vec = Vector(
             id=f"chunk-{random_id}", vector=get_embedding(chunk), metadata=metadata

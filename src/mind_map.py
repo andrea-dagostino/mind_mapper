@@ -1,18 +1,6 @@
-"""
-This script takes in a text and returns a mind map of the text.
-
-A mind map is a diagram used to visually organize information. ù
-A mind map is hierarchical and shows relationships among pieces of the whole.
-It is often created around a single concept, drawn as an image in the center of a blank page,
-to which associated representations of ideas such as images, words and parts of words are added.
-Major ideas are connected directly to the central concept, and other ideas branch out from those major ideas.
-"""
-
-
 import networkx as nx
 from graphviz import Digraph
 
-# plotly
 import plotly.express as px
 import plotly.graph_objects as go
 
@@ -20,12 +8,12 @@ import plotly.graph_objects as go
 def create_plotly_mind_map(data: dict) -> go.Figure:
     """
     data is a dictionary containing the following
-    { "relationships": [{"source": ..., "target": ..., "type": ..., "origin": ...}, {...}] }
+    { "relationships": [{"source": ..., "target": ..., "type": ...}, {...}] }
     source: The source node
     target: The target node
     type: The type of the relationship between the source and target nodes
-    origin: The origin node from which the relationship originates
     """
+    ### START - NETWORKX LOGIC ###
     # Create a directed graph
     G = nx.DiGraph()
 
@@ -38,14 +26,6 @@ def create_plotly_mind_map(data: dict) -> go.Figure:
     # Create a layout for our nodes
     layout = nx.spring_layout(G, seed=42)
 
-    # Create a color map for origin nodes
-    origin_nodes = set(relationship["origin"] for relationship in data["relationships"])
-    colors = px.colors.qualitative.Plotly  # Using Plotly's qualitative color scale
-    color_map = {
-        origin: colors[i % len(colors)] for i, origin in enumerate(origin_nodes)
-    }
-
-    # Create a trace for each edge, colored by origin
     traces = []
     for relationship in data["relationships"]:
         x0, y0 = layout[relationship["source"]]
@@ -59,45 +39,29 @@ def create_plotly_mind_map(data: dict) -> go.Figure:
         )
         traces.append(edge_trace)
 
-    # # Create legend items for each origin
-    # for origin, color in color_map.items():
-    #     traces.append(
-    #         go.Scatter(
-    #             x=[None],
-    #             y=[None],
-    #             mode="markers",
-    #             marker=dict(size=10, color=color),
-    #             legendgroup=origin,
-    #             showlegend=True,
-    #             name=origin,
-    #         )
-    #     )
-
     # Modify node trace to color based on source node
     node_x = []
     node_y = []
-    node_colors = []  # List to hold colors for nodes
     for node in G.nodes():
         x, y = layout[node]
         node_x.append(x)
         node_y.append(y)
-        node_colors.append(
-            color_map.get(node, "#888")
-        )  # Default color if node is not a source
+
+    ### END - NETWORKX LOGIC ###
 
     node_trace = go.Scatter(
         x=node_x,
         y=node_y,
         mode="markers+text",
         # add text to the nodes and origin
-        text=[node + " - " + color_map.get(node, "No origin") for node in G.nodes()],
+        text=[node for node in G.nodes()],
         hoverinfo="text",
         marker=dict(
             showscale=False,
-            colorscale="YlGnBu",
+            colorscale="Greys",  # Change colorscale to grayscale
             reversescale=True,
-            color=node_colors,
             size=20,
+            color='#505050',  # Set node color to gray
             line_width=2,
         ),
     )
@@ -141,8 +105,6 @@ def create_plotly_mind_map(data: dict) -> go.Figure:
     fig = go.Figure(
         data=traces + [node_trace],
         layout=go.Layout(
-            # title='<br>Mind Map',
-            # titlefont_size=16,
             showlegend=False,
             hovermode="closest",
             margin=dict(b=20, l=5, r=5, t=40),
@@ -196,37 +158,3 @@ def create_plotly_mind_map(data: dict) -> go.Figure:
     node_trace.marker.line.color = "white"
 
     return fig
-
-
-def create_graphviz_mind_map(data: dict) -> Digraph:
-    """
-    data is a dictionary containing the following
-    { "relationships": [{"source": ..., "target": ..., "type": ..., "origin": ...}, {...}] }
-    source: The source node
-    target: The target node
-    type: The type of the relationship between the source and target nodes
-    origin: The origin node from which the relationship originates
-    """
-    # Create a directed graph
-    dot = Digraph(comment="Mind Map")
-
-    # Set graph attributes to control the size and layout
-    dot.attr(size="7,4")  # Set the size of the drawing area, in inches.
-    dot.attr("node", shape="box")  # Use box shape for nodes to fit more text.
-    dot.attr(
-        rankdir="LR"
-    )  # Left to right graph layout, can also use 'TB' for top to bottom.
-
-    # Optionally, increase the font size for nodes and edges if needed
-    dot.attr("node", fontsize="10")
-    dot.attr("edge", fontsize="8")
-
-    # Add nodes and edges to the graph
-    for relationship in data["relationships"]:
-        dot.node(relationship["source"], relationship["source"])
-        dot.node(relationship["target"], relationship["target"])
-        dot.edge(
-            relationship["source"], relationship["target"], label=relationship["type"]
-        )
-
-    return dot

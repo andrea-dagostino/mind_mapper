@@ -13,7 +13,7 @@ PROMPTS = {
     - is a type of
 
     Your output should be a JSON containing the following:
-    { "relationships": [{"source": ..., "target": ..., "type": ..., "origin": _source_or_target_}, {...}] } \n
+    { "relationships": [{"source": ..., "target": ..., "type": ...}, {...}] } \n
     - source: The source node\n
     - target: The target node\n
     - type: The type of the relationship between the source and target nodes\n
@@ -28,7 +28,7 @@ PROMPTS = {
     You are a senior business intelligence analyst, who is able to extract valuable insights from data.
     You are tasked with extracting information from a given mind map data.\n
     The mind map data is a JSON containing the following:
-    {{ "relationships": [{{"source": ..., "target": ..., "type": ..."origin": _source_or_target_}}, {{...}}] }} \n
+    {{ "relationships": [{{"source": ..., "target": ..., "type": ...}}, {{...}}] }} \n
     - source: The source node\n
     - target: The target node\n
     - type: The type of the relationship between the source and target nodes\n
