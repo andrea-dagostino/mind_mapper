@@ -1,16 +1,16 @@
 from src.logger import get_console_logger
 from src.llm.prompts import PROMPTS
 
-import os
-
 
 logger = get_console_logger("llm")
+MIND_MAP_EXTRACTION_MODEL = "gpt-4-turbo-preview"
+MIND_MAP_INSPECTION_MODEL = "gpt-4"
 
 
 def extract_mind_map_data(openai_client, text: str) -> None:
     logger.info(f"Extracting mind map data from text...")
     response = openai_client.chat.completions.create(
-        model="gpt-4-turbo-preview",
+        model=MIND_MAP_EXTRACTION_MODEL,
         response_format={"type": "json_object"},
         temperature=0,
         messages=[
@@ -29,7 +29,7 @@ def extract_mind_map_data_of_two(
         source_text=source_text, target_text=target_text
     )
     response = openai_client.chat.completions.create(
-        model="gpt-4-turbo-preview",
+        model=MIND_MAP_INSPECTION_MODEL,
         response_format={"type": "json_object"},
         messages=[
             {"role": "system", "content": PROMPTS["mind_map_of_many"]},

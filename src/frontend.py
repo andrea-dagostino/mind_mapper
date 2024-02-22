@@ -24,10 +24,6 @@ PAGE_TITLE = "Mind Mapper | Create mind maps from your files"
 PAGE_ICON = "🧠"
 LAYOUT = "wide"
 SIDEBAR_STATE = "expanded"
-SYSTEM_PROMPT = """You are an AI assistant helping a user navigate a knowledge base.
-The user asks you a question and you provide an answer based on the knowledge base. 
-Always be as clear as possible, avoid ambiguity and provide the most accurate information possible without adding any additional information that is not present in the knowledge base.
-"""
 
 if "OPENAI_API_KEY" not in st.session_state:
     st.session_state["OPENAI_API_KEY"] = ""
@@ -36,6 +32,11 @@ if "UPSTASH_VECTOR_DB_REST_URL" not in st.session_state:
 if "UPSTASH_VECTOR_DB_TOKEN" not in st.session_state:
     st.session_state["UPSTASH_VECTOR_DB_TOKEN"] = ""
 
+openai_client = OpenAI(api_key=st.session_state["OPENAI_API_KEY"])
+vector_db_index = Index(
+    url=st.session_state["UPSTASH_VECTOR_DB_REST_URL"],
+    token=st.session_state["UPSTASH_VECTOR_DB_TOKEN"],
+)
 
 def setup_page():
     st.set_page_config(
@@ -58,10 +59,18 @@ def setup_hero():
 
 def setup_sidebar():
     with st.sidebar:
-        st.markdown("### 🔑 API Keys")
+        st.markdown("## 🔑 API Keys")
         # Example for setting up an API key input for OpenAI
+        st.markdown(
+            "### OpenAI"
+            "\nGet your API key [here](https://platform.openai.com/docs/quickstart?context=python)"
+        )
         openai_api_key = st.text_input(label="OpenAI API Key", type="password")
         # Example for setting up an API key input for Upstash Vector DB
+        st.markdown(
+            "### Upstash Vector DB"
+            "\nSetup your Vector DB [here](https://console.upstash.com/)"
+        )
         upstash_vector_db_rest_url = st.text_input(
             label="Upstash Vector DB REST url", type="default"
         )
@@ -77,14 +86,7 @@ def setup_sidebar():
             st.success("API keys set successfully")
 
 
-openai_client = OpenAI(api_key=st.session_state["OPENAI_API_KEY"])
-vector_db_index = Index(
-    url=st.session_state["UPSTASH_VECTOR_DB_REST_URL"],
-    token=st.session_state["UPSTASH_VECTOR_DB_TOKEN"],
-)
-
-
-def ingest(hash_id: str):  # Pass the uploaded file as an argument
+def ingest(hash_id: str):
     # TODO
     with st.spinner("Ingesting file..."):
         # Assuming 'row' is defined elsewhere and accessible here
@@ -107,11 +109,14 @@ def text_input_area():
     )
     st.markdown("#### 📝 Copy-Paste Content")
     text = st.text_area(
-        "Paste in the knowledge you want to process", height=50, key="text_area"
+        "Paste in the knowledge you want to process",
+        height=50,
+        key="text_area",
+        disabled=True,
     )
-    title = st.text_input("Provide title", key="title_text_area")
+    title = st.text_input("Provide title", key="title_text_area", disabled=True)
     # save to db
-    if st.button("Save to database", key="text_area_save"):
+    if st.button("Save to database", key="text_area_save", disabled=True):
         if text and title:
             hash_id = hash_text(text)
             db.add_one(
@@ -135,9 +140,10 @@ def upload_text_file():
         "Upload a text file",
         type=["txt"],  # Use the constant for file types
         accept_multiple_files=True,
+        disabled=True,
     )
     # save to db
-    if st.button("Save to database", key="upload_text_save"):
+    if st.button("Save to database", key="upload_text_save", disabled=True):
         progress_text = "Saving text files to database..."
         progress_bar = st.progress(0, text=progress_text)
         if uploaded_text_file is not None:
@@ -192,14 +198,14 @@ def upload_audio_file():
     uploaded_audio_file = st.file_uploader(
         "Upload an audio file",
         type=AUDIO_FILE_TYPES,  # Use the constant for file types
+        disabled=True,
     )
-    if st.button("Transcribe & Save to database", key="transcribe"):
+    if st.button("Transcribe & Save to database", key="transcribe", disabled=True):
         if uploaded_audio_file is not None:
             extension = "." + uploaded_audio_file.name.split(".")[-1]
             with NamedTemporaryFile(suffix=extension) as temp_audio_file:
                 temp_audio_file.write(uploaded_audio_file.getvalue())
                 temp_audio_file.seek(0)
-                # TODO: check if item exists before processing with Whisper
                 with st.spinner("Transcribing audio track..."):
                     transcript = create_transcript(openai_client, temp_audio_file.name)
                     # Check if the transcript already exists in the database
@@ -217,7 +223,6 @@ def upload_audio_file():
                         )
                         ingest(hash_id)
                         st.success("Transcription complete - item saved in database")
-                        # TODO: remove success message after 5 seconds
                     else:
                         st.warning("Transcription already exists in the database.")
         else:
@@ -313,7 +318,6 @@ def create_mind_map():
                         index=vector_db_index,
                         openai_client=openai_client,
                         question=prompt,
-                        system_prompt=SYSTEM_PROMPT,
                         top_n=5,
                     )
                     if data:
